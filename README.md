@@ -26,7 +26,7 @@ npm install -g yo generator-code
 1. Clonez le dépôt sur votre machine locale :
 
 ```sh
-git clone https://github.com/votre-utilisateur/gopaascript.git
+git clone https://github.com/KiddMiguel/GoPaaScript_v1.git
 ```
 
 2. Accédez au répertoire du projet :
