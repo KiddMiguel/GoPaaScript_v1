@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoPaaScript View</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            color: #ffffff;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .container {
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container div {
+            margin-bottom: 15px;
+        }
+        
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .container input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .id-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .id-container input[type="text"] {
+            flex: 1;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .id-container label {
+            flex-basis: 100%;
+        }
+        
+        .id-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .id-container button:hover {
+            background-color: #003f7f;
+        }
+        
+        .connect-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .connect-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Titre ou Phrase</h1>
+    <p>Texte assez long</p>
+    <div class="container">
+        <div>
+            <label for="url">URL</label>
+            <input type="text" id="url" name="url">
+        </div>
+        <div>
+            <label for="bearer">Bearer</label>
+            <input type="text" id="bearer" name="bearer">
+        </div>
+        <div class="id-container">
+            <label for="id1">ID</label>
+            <input type="text" id="id1" name="id1">
+        </div>
+        <button class="connect-button" id="connectButton">Connecter</button>
+    </div>
+    <script>
+        const vscode = acquireVsCodeApi();
+
+        document.getElementById('connectButton').addEventListener('click', () => {
+            const url = document.getElementById('url').value;
+            const bearer = document.getElementById('bearer').value;
+            const ids = document.getElementById('id1').value.split(',').map(id => id.trim());
+            console.log("Connect")
+            vscode.postMessage({
+                command: 'connect',
+                url: url,
+                bearer: bearer,
+                ids: ids
+            });
+        });
+    </script>
+</body>
+
+</html>

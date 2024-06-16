@@ -1,0 +1,77 @@
+{
+    "name": "gopaascript",
+    "displayName": "GoPaaScript",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:gopaascript.run"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [{
+                "command": "gopaascript.run",
+                "title": "Run GoPaaScript"
+            },
+            {
+                "command": "gopaascript.sendScripts",
+                "title": "Send Modified Scripts"
+            },
+            {
+                "command": "gopaascript.sendScriptsRaccourci",
+                "title": ""
+            },
+            {
+                "command": "gopaascript.openUI",
+                "title": "Open GoPaaScript UI"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [{
+                "id": "gopaascriptViewContainer",
+                "title": "GoPaaScript",
+                "icon": "resources/icon.png"
+            }]
+        },
+        "views": {
+            "gopaascriptViewContainer": [{
+                "id": "gopaascriptView",
+                "name": "GoPaaScript View"
+            }]
+        },
+        "menus": {
+            "editor/title": [{
+                "command": "gopaascript.sendScripts",
+                "when": "editorLangId == javascript || editorLangId == php",
+                "group": "navigation"
+            }]
+        },
+        "keybindings": [{
+            "command": "gopaascript.sendScriptsRaccourci",
+            "key": "ctrl+shift+a",
+            "when": "editorTextFocus"
+        }]
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.90.0",
+        "@vscode/test-cli": "^0.0.9",
+        "@vscode/test-electron": "^2.4.0",
+        "eslint": "^8.57.0",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "axios": "^1.7.2"
+    }
+}
