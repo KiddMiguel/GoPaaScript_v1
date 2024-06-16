@@ -32,7 +32,7 @@ git clone https://github.com/KiddMiguel/GoPaaScript_v1.git
 2. Accédez au répertoire du projet :
 
 ```sh
-cd gopaascript
+cd GoPaaScript_v1
 ```
 
 3. Installez les dépendances du projet :
